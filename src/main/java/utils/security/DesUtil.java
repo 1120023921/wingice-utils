@@ -9,8 +9,8 @@ import javax.crypto.spec.DESKeySpec;
 public class DesUtil {
 
     // 密钥，是加密解密的凭据，长度为8的倍数
-    private static String PASSWORD_CRYPT_KEY = "9ba45bfd500642328ec03ad8ef1b6e75";
-    private static String DES = "DES";
+    public static String PASSWORD_CRYPT_KEY = "9ba45bfd500642328ec03ad8ef1b6e75";
+    public static String DES = "DES";
 
     public DesUtil() {
     }
