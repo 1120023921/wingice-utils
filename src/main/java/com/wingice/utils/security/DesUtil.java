@@ -1,4 +1,4 @@
-package utils.security;
+package com.wingice.utils.security;
 
 import java.security.*;
 import javax.crypto.Cipher;

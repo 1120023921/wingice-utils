@@ -1,4 +1,4 @@
-package utils.datetime;
+package com.wingice.utils.datetime;
 
 import org.junit.Test;
 

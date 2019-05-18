@@ -1,8 +1,6 @@
-package utils.security;
+package com.wingice.utils.security;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author 胡昊
