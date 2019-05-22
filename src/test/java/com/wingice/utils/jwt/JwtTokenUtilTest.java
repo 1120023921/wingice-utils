@@ -1,15 +1,12 @@
 package com.wingice.utils.jwt;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.Test;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
 
 /**
  * @author 胡昊
