@@ -21,7 +21,7 @@ public class DateTimeUtils {
      * @return 时间戳
      */
     public static Long stringToLong(String dateTime, ZoneId zoneId, String pattern) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
+        final DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
         return ZonedDateTime.from(df.withZone(zoneId).parse(dateTime)).toInstant().toEpochMilli() / 1000 * 1000;
     }
 
@@ -34,7 +34,7 @@ public class DateTimeUtils {
      * @return 时间戳
      */
     public static Long stringToLong(String dateTime) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        final DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return ZonedDateTime.from(df.withZone(ZoneId.systemDefault()).parse(dateTime)).toInstant().toEpochMilli() / 1000 * 1000;
     }
 
@@ -47,7 +47,7 @@ public class DateTimeUtils {
      * @return 时间字符串
      */
     public static String longToString(Long dateTime, ZoneId zoneId, String pattern) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
+        final DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
         return df.format(ZonedDateTime.ofInstant(Instant.ofEpochMilli(dateTime), zoneId));
     }
 
@@ -60,7 +60,7 @@ public class DateTimeUtils {
      * @return 时间字符串
      */
     public static String longToString(Long dateTime) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        final DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return df.format(ZonedDateTime.ofInstant(Instant.ofEpochMilli(dateTime), ZoneId.systemDefault()));
     }
 
@@ -71,7 +71,7 @@ public class DateTimeUtils {
      * @return 当天时间戳
      */
     public static Long getStartTimeOfDay(ZoneId zoneId) {
-        ZonedDateTime zonedDateTime = ZonedDateTime.now(zoneId);
+        final ZonedDateTime zonedDateTime = ZonedDateTime.now(zoneId);
         return zonedDateTime.withHour(0).withMinute(0).withSecond(0).toInstant().toEpochMilli() / 1000 * 1000;
     }
 
@@ -81,7 +81,7 @@ public class DateTimeUtils {
      * @return 当天时间戳
      */
     public static Long getStartTimeOfDay() {
-        ZonedDateTime zonedDateTime = ZonedDateTime.now(ZoneId.systemDefault());
+        final ZonedDateTime zonedDateTime = ZonedDateTime.now(ZoneId.systemDefault());
         return zonedDateTime.withHour(0).withMinute(0).withSecond(0).toInstant().toEpochMilli() / 1000 * 1000;
     }
 }
