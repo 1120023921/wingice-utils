@@ -77,6 +77,22 @@ public class JwtTokenUtil {
     }
 
     /**
+     * 判断令牌是否过期
+     *
+     * @param token 令牌
+     * @return 是否过期
+     */
+    public static Boolean isTokenExpired(String token) {
+        try {
+            final Claims claims = (Claims) Jwts.parser().parse(token.substring(0, token.lastIndexOf(".") + 1)).getBody();
+            final Date expiration = claims.getExpiration();
+            return expiration.before(new Date());
+        } catch (ExpiredJwtException e) {
+            return Boolean.TRUE;
+        }
+    }
+
+    /**
      * 刷新令牌
      *
      * @param token  原令牌
