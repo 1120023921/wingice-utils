@@ -42,10 +42,15 @@
         </plugins>
     </build>
     <distributionManagement>
-        <repository>
+        <snapshotRepository>
             <id>sankemaven</id>
             <name>sanke maven</name>
             <url>http://10.70.50.55:8088/repository/maven-snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sankemaven</id>
+            <name>sanke maven</name>
+            <url>http://10.70.50.55:8088/repository/maven-releases</url>
         </repository>
     </distributionManagement>
 </project>
