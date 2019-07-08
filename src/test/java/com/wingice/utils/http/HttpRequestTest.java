@@ -16,14 +16,14 @@ public class HttpRequestTest {
     @Test
     public void sendGet() {
         //发送 GET 请求
-        String s = HttpRequest.sendGet("http://www.baidu.com", null, null);
+        String s = HttpRequestUtil.sendGet("http://www.baidu.com", null, null);
         System.out.println(s);
     }
 
     @Test
     public void sendPost() {
         //发送 GET 请求
-        String s = HttpRequest.sendPost("http://www.baidu.com", null, null);
+        String s = HttpRequestUtil.sendPost("http://www.baidu.com", null, null);
         System.out.println(s);
     }
 }

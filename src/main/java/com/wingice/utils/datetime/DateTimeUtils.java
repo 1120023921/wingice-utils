@@ -84,4 +84,9 @@ public class DateTimeUtils {
         final ZonedDateTime zonedDateTime = ZonedDateTime.now(ZoneId.systemDefault());
         return zonedDateTime.withHour(0).withMinute(0).withSecond(0).toInstant().toEpochMilli() / 1000 * 1000;
     }
+
+    public static LocalTime stringToLocalTime(String time) {
+        final DateTimeFormatter df = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return LocalTime.parse(time, df);
+    }
 }

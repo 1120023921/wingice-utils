@@ -2,6 +2,7 @@ package com.wingice.utils.datetime;
 
 import org.junit.Test;
 
+import java.time.LocalTime;
 import java.time.ZoneId;
 
 /**
@@ -28,7 +29,7 @@ public class DateTimeUtilsTest {
     @Test
     public void longToString() {
         Long time = 1558251040000L;
-        System.out.println(DateTimeUtils.longToString(time, ZoneId.of("CTT", ZoneId.SHORT_IDS), "yyyy-MM-dd'T'HH:mm:ss"));
+        System.out.println(DateTimeUtils.longToString(time, ZoneId.of("+00:00", ZoneId.SHORT_IDS), "yyyy-MM-dd'T'HH:mm:ss"));
     }
 
     @Test
@@ -45,5 +46,11 @@ public class DateTimeUtilsTest {
     @Test
     public void getStartTimeOfDay1() {
         System.out.println(DateTimeUtils.getStartTimeOfDay());
+    }
+
+    @Test
+    public void stringToLocalTime() {
+        LocalTime localTime = DateTimeUtils.stringToLocalTime("08:00:00");
+        System.out.println(localTime);
     }
 }
