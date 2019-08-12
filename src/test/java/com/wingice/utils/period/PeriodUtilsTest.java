@@ -139,4 +139,73 @@ public class PeriodUtilsTest {
         PeriodUtils.relativeMonthlyNumbered(patternedRecurrence);
     }
 
+    @Test
+    public void absoluteYearlyEndDate() {
+        PatternedRecurrence patternedRecurrence = new PatternedRecurrence();
+        RecurrencePattern recurrencePattern = new RecurrencePattern();
+        recurrencePattern.type = RecurrencePatternType.ABSOLUTE_YEARLY;
+        recurrencePattern.month = 8;
+        recurrencePattern.dayOfMonth = 31;
+        recurrencePattern.interval = 2;
+        RecurrenceRange recurrenceRange = new RecurrenceRange();
+        recurrenceRange.startDate = System.currentTimeMillis();
+        recurrenceRange.endDate = System.currentTimeMillis() + 5 * 365 * 24 * 60 * 60 * 1000L;
+        recurrenceRange.type = RecurrenceRangeType.END_DATE;
+        patternedRecurrence.setPattern(recurrencePattern);
+        patternedRecurrence.setRange(recurrenceRange);
+        PeriodUtils.absoluteYearlyEndDate(patternedRecurrence);
+    }
+
+    @Test
+    public void absoluteYearlyNumbered() {
+        PatternedRecurrence patternedRecurrence = new PatternedRecurrence();
+        RecurrencePattern recurrencePattern = new RecurrencePattern();
+        recurrencePattern.type = RecurrencePatternType.ABSOLUTE_YEARLY;
+        recurrencePattern.month = 8;
+        recurrencePattern.dayOfMonth = 31;
+        recurrencePattern.interval = 2;
+        RecurrenceRange recurrenceRange = new RecurrenceRange();
+        recurrenceRange.startDate = System.currentTimeMillis();
+        recurrenceRange.numberOfOccurrences = 5;
+        recurrenceRange.type = RecurrenceRangeType.NUMBERED;
+        patternedRecurrence.setPattern(recurrencePattern);
+        patternedRecurrence.setRange(recurrenceRange);
+        PeriodUtils.absoluteYearlyNumbered(patternedRecurrence);
+    }
+
+    @Test
+    public void relativeYearlyEndDate() {
+        PatternedRecurrence patternedRecurrence = new PatternedRecurrence();
+        RecurrencePattern recurrencePattern = new RecurrencePattern();
+        recurrencePattern.type = RecurrencePatternType.RELATIVE_MONTHLY;
+        recurrencePattern.daysOfWeek = Arrays.asList(DayOfWeek.THURSDAY, DayOfWeek.FRIDAY);
+        recurrencePattern.interval = 1;
+        recurrencePattern.index = WeekIndex.THIRD;
+        recurrencePattern.month = 8;
+        RecurrenceRange recurrenceRange = new RecurrenceRange();
+        recurrenceRange.startDate = DateTimeUtils.getStartTimeOfDay();
+        recurrenceRange.endDate = System.currentTimeMillis() + 5 * 365 * 24 * 60 * 60 * 1000L;
+        recurrenceRange.type = RecurrenceRangeType.END_DATE;
+        patternedRecurrence.setPattern(recurrencePattern);
+        patternedRecurrence.setRange(recurrenceRange);
+        PeriodUtils.relativeYearlyEndDate(patternedRecurrence);
+    }
+
+    @Test
+    public void relativeYearlyNumbered() {
+        PatternedRecurrence patternedRecurrence = new PatternedRecurrence();
+        RecurrencePattern recurrencePattern = new RecurrencePattern();
+        recurrencePattern.type = RecurrencePatternType.RELATIVE_MONTHLY;
+        recurrencePattern.daysOfWeek = Arrays.asList(DayOfWeek.THURSDAY, DayOfWeek.FRIDAY);
+        recurrencePattern.interval = 1;
+        recurrencePattern.month = 8;
+        recurrencePattern.index = WeekIndex.THIRD;
+        RecurrenceRange recurrenceRange = new RecurrenceRange();
+        recurrenceRange.startDate = DateTimeUtils.getStartTimeOfDay();
+        recurrenceRange.numberOfOccurrences = 5;
+        recurrenceRange.type = RecurrenceRangeType.NUMBERED;
+        patternedRecurrence.setPattern(recurrencePattern);
+        patternedRecurrence.setRange(recurrenceRange);
+        PeriodUtils.relativeYearlyNumbered(patternedRecurrence);
+    }
 }
