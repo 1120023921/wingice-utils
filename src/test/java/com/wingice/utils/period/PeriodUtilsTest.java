@@ -122,4 +122,21 @@ public class PeriodUtilsTest {
         PeriodUtils.relativeMonthlyEndDate(patternedRecurrence);
     }
 
+    @Test
+    public void relativeMonthlyNumbered() {
+        PatternedRecurrence patternedRecurrence = new PatternedRecurrence();
+        RecurrencePattern recurrencePattern = new RecurrencePattern();
+        recurrencePattern.type = RecurrencePatternType.RELATIVE_MONTHLY;
+        recurrencePattern.daysOfWeek = Arrays.asList(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
+        recurrencePattern.interval = 2;
+        recurrencePattern.index = WeekIndex.FIRST;
+        RecurrenceRange recurrenceRange = new RecurrenceRange();
+        recurrenceRange.startDate = DateTimeUtils.getStartTimeOfDay();
+        recurrenceRange.numberOfOccurrences = 5;
+        recurrenceRange.type = RecurrenceRangeType.NUMBERED;
+        patternedRecurrence.setPattern(recurrencePattern);
+        patternedRecurrence.setRange(recurrenceRange);
+        PeriodUtils.relativeMonthlyNumbered(patternedRecurrence);
+    }
+
 }
