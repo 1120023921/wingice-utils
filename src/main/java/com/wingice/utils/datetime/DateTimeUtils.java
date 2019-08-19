@@ -89,4 +89,12 @@ public class DateTimeUtils {
         final DateTimeFormatter df = DateTimeFormatter.ofPattern("HH:mm:ss");
         return LocalTime.parse(time, df);
     }
+
+    public static String localDateTimeToString(LocalDateTime dateTime, String pattern) {
+        if (null == pattern || "".equals(pattern)) {
+            pattern = "yyyy-MM-dd HH:mm:ss";
+        }
+        final DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
+        return df.format(dateTime);
+    }
 }
