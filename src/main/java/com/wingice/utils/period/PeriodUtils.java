@@ -328,6 +328,51 @@ public class PeriodUtils {
     }
 
     /**
+     * @param patternedRecurrence 周期信息
+     * @return 日期列表
+     * @Author 胡昊
+     * @Description 周期信息转换日期列表
+     * @Date 10:21 2019/9/4
+     **/
+    public static List<LocalDate> getPeriod(PatternedRecurrence patternedRecurrence) {
+        if (patternedRecurrence.getRange().type.equals(RecurrenceRangeType.END_DATE)) {
+            if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.DAILY)) {
+                return dialyEndDate(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.WEEKLY)) {
+                return weeklyEndDate(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.ABSOLUTE_MONTHLY)) {
+                return absoluteMonthlyEndDate(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.RELATIVE_MONTHLY)) {
+                return relativeMonthlyEndDate(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.ABSOLUTE_YEARLY)) {
+                return absoluteYearlyEndDate(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.RELATIVE_YEARLY)) {
+                return relativeYearlyEndDate(patternedRecurrence);
+            } else {
+                return new ArrayList<>();
+            }
+        } else if (patternedRecurrence.getRange().type.equals(RecurrenceRangeType.NUMBERED)) {
+            if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.DAILY)) {
+                return dialyNumbered(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.WEEKLY)) {
+                return weeklyNumbered(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.ABSOLUTE_MONTHLY)) {
+                return absoluteMonthlyNumbered(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.RELATIVE_MONTHLY)) {
+                return relativeMonthlyNumbered(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.ABSOLUTE_YEARLY)) {
+                return absoluteYearlyNumbered(patternedRecurrence);
+            } else if (patternedRecurrence.getPattern().type.equals(RecurrencePatternType.RELATIVE_YEARLY)) {
+                return relativeYearlyNumbered(patternedRecurrence);
+            } else {
+                return new ArrayList<>();
+            }
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    /**
      * @param dayOfWeek 星期
      * @return Calendar星期转换
      * @Author 胡昊
