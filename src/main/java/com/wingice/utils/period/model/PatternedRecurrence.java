@@ -1,5 +1,7 @@
 package com.wingice.utils.period.model;
 
+import java.io.Serializable;
+
 /**
  * @author 胡昊
  * Description: TODO
@@ -7,7 +9,7 @@ package com.wingice.utils.period.model;
  * Time: 0:04
  * Create: DoubleH
  */
-public class PatternedRecurrence {
+public class PatternedRecurrence implements Serializable {
 
     /**
      * The Pattern.
