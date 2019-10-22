@@ -60,16 +60,13 @@ public class PeriodUtils {
         //调整到开始日期当周的第一天
         calendar.add(Calendar.DAY_OF_MONTH, -(calendar.get(Calendar.DAY_OF_WEEK) - 1));
         while (true) {
-            int expireNum = 0;
             for (DayOfWeek dayOfWeek : patternedRecurrence.getPattern().daysOfWeek) {
                 final long millis = calendar.getTimeInMillis() + (transferFirstDayOfWeek(dayOfWeek) - 1) * 24 * 60 * 60 * 1000L;
                 if (millis >= patternedRecurrence.getRange().startDate && millis <= patternedRecurrence.getRange().endDate) {
                     localDateList.add(Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate());
-                } else {
-                    expireNum++;
                 }
             }
-            if (expireNum == patternedRecurrence.getPattern().daysOfWeek.size()) {
+            if (calendar.getTimeInMillis() > patternedRecurrence.getRange().endDate) {
                 break;
             } else {
                 calendar.add(Calendar.WEEK_OF_MONTH, patternedRecurrence.getPattern().interval);

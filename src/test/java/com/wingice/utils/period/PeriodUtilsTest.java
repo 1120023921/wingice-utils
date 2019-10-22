@@ -4,10 +4,17 @@ import com.wingice.utils.datetime.DateTimeUtils;
 import com.wingice.utils.period.model.*;
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.Arrays;
 
 
 public class PeriodUtilsTest {
+
+    @Test
+    public void test(){
+        System.out.println(LocalDate.now().atStartOfDay(ZoneOffset.ofHours(8)).toInstant().toEpochMilli());
+    }
 
     @Test
     public void dialyEndDate() {
@@ -45,11 +52,11 @@ public class PeriodUtilsTest {
         RecurrencePattern recurrencePattern = new RecurrencePattern();
         recurrencePattern.type = RecurrencePatternType.WEEKLY;
         recurrencePattern.firstDayOfWeek = DayOfWeek.SUNDAY;
-        recurrencePattern.daysOfWeek = Arrays.asList(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY);
-        recurrencePattern.interval = 1;
+        recurrencePattern.daysOfWeek = Arrays.asList(DayOfWeek.SUNDAY, DayOfWeek.WEDNESDAY);
+        recurrencePattern.interval = 2;
         RecurrenceRange recurrenceRange = new RecurrenceRange();
-        recurrenceRange.startDate = DateTimeUtils.getStartTimeOfDay();
-        recurrenceRange.endDate = recurrenceRange.startDate + (30L * 24 * 60 * 60 * 1000);
+        recurrenceRange.startDate = 1572537600000L;
+        recurrenceRange.endDate = 1575043200000L;
         recurrenceRange.type = RecurrenceRangeType.END_DATE;
         patternedRecurrence.setPattern(recurrencePattern);
         patternedRecurrence.setRange(recurrenceRange);
