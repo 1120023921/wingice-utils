@@ -1,5 +1,6 @@
 package com.wingice.utils.period.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * Time: 23:57
  * Create: DoubleH
  */
-public class RecurrencePattern {
+public class RecurrencePattern implements Serializable {
 
     public RecurrencePatternType type;
 
